@@ -51,11 +51,12 @@ const initializeProvider = async () => {
 
 const genWallet = async () => {
   const provider = await initializeProvider();
-  // known private key for testing, replace with your own key
+  // Use this for failed decryption
   const wallet = ethers.Wallet.createRandom();
 
   return new ethers.Wallet(wallet.privateKey, provider);
 
+  // Use this for successful decryption (must hold at least 1 0x71114745941707ACAeCf3C756c012d2388d4A943 token)
   // return new ethers.Wallet(process.env.PK as `0x${string}`, provider);
 };
 
