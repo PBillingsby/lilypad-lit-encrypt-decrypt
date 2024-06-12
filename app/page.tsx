@@ -9,6 +9,9 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async () => {
+    if (output) {
+      handleReset()
+    }
     try {
       setLoading(true);
       setError(null);  // Clear any previous errors
@@ -27,7 +30,7 @@ export default function Home() {
       }
 
       const data = await response.json();
-      setOutput(data.decryptedString || JSON.stringify(data));
+      setOutput(data.decryptedString);
       setLoading(false);
     } catch (error: any) {
       console.error('Error:', error);
